@@ -3,35 +3,6 @@ public class Carta {
     private final Tipo tipo;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public Carta(int valor, Tipo tipo) {
         if (valor < 1 || valor > 13) {
             throw new IllegalArgumentException("El valor debe estar entre 1 y 13.");
@@ -44,52 +15,12 @@ public class Carta {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public int getValor() {
         return valor;
     }
     public Tipo getTipo() {
         return tipo;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private String obtenerNombreValor() {
@@ -112,26 +43,10 @@ public class Carta {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public String toString() {
         return obtenerNombreValor() + " de " + tipo;
     }
-
-    
-
-
 
     
 }

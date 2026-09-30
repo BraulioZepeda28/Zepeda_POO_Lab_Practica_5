@@ -95,9 +95,10 @@ public class Juego {
 
 
         
-        System.out.println("\n \nPrueba de Practica 6");
-        Carta cartaPrueba = ana.getMano().get(0); 
-        Visualizador.carta(cartaPrueba, new Posicion(20, 40)); 
+        System.out.println("Prueba de Practica 6");
+         System.out.println("La carta de " + jugadorEncontrado.nombre + " se va a mostrar. Y esta carta es " + cartaBuscada + ".");
+        // Carta cartaTest = ana.getMano().get(0); 
+        Visualizador.carta(cartaBuscada, new Posicion(20, 40)); 
         
         
 
