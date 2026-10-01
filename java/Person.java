@@ -99,6 +99,14 @@ public class Person
         draw();
     }
 
+    public void setPosition(int newX, int newY)
+    {
+        erase();
+        xPosition = newX;
+        yPosition = newY;
+        draw();
+    }
+
     /**
      * Slowly move the person horizontally by 'distance' pixels.
      */

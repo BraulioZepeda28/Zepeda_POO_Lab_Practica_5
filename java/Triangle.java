@@ -15,19 +15,37 @@ public class Triangle
     private int yPosition;
     private String color;
     private boolean isVisible;
+    private int orientacion;
 
     /**
      * Create a new triangle at default position with default color.
      */
     public Triangle()
     {
+        orientacion = 0;
         height = 60;
         width = 70;
-        xPosition = 210;
-        yPosition = 140;
+        xPosition = 250;
+        yPosition = 250;
         color = "green";
         isVisible = false;
     }
+
+
+
+
+    /**
+     * Rotate the triangle 90 degrees clockwise.
+     */
+    public void rotate()
+    {
+        erase();
+        orientacion = (orientacion + 1) % 4;
+        draw();
+    }
+
+
+
 
     /**
      * Make this triangle visible. If it was already visible, do nothing.
@@ -96,6 +114,14 @@ public class Triangle
     {
         erase();
         yPosition += distance;
+        draw();
+    }
+
+    public void setPosition(int newX, int newY)
+    {
+        erase();
+        xPosition = newX;
+        yPosition = newY;
         draw();
     }
 
@@ -171,12 +197,32 @@ public class Triangle
     /**
      * Draw the triangle with current specifications on screen.
      */
-    private void draw()
+  private void draw()
     {
         if(isVisible) {
             Canvas canvas = Canvas.getCanvas();
-            int[] xpoints = { xPosition, xPosition + (width/2), xPosition - (width/2) };
-            int[] ypoints = { yPosition, yPosition + height, yPosition + height };
+            int[] xpoints = new int[3];
+            int[] ypoints = new int[3];
+            
+            switch(orientacion) {
+                case 0: // Apunta hacia Arriba
+                    xpoints = new int[] { xPosition, xPosition + (width/2), xPosition - (width/2) };
+                    ypoints = new int[] { yPosition, yPosition + height, yPosition + height };
+                    break;
+                case 1: // Apunta hacia la Derecha
+                    xpoints = new int[] { xPosition + height, xPosition, xPosition };
+                    ypoints = new int[] { yPosition + (width/2), yPosition + width, yPosition };
+                    break;
+                case 2: // Apunta hacia Abajo
+                    xpoints = new int[] { xPosition, xPosition - (width/2), xPosition + (width/2) };
+                    ypoints = new int[] { yPosition + height, yPosition, yPosition };
+                    break;
+                case 3: // Apunta hacia la Izquierda
+                    xpoints = new int[] { xPosition - height, xPosition, xPosition };
+                    ypoints = new int[] { yPosition + (width/2), yPosition, yPosition + width };
+                    break;
+            }
+            
             canvas.draw(this, color, new Polygon(xpoints, ypoints, 3));
             canvas.wait(10);
         }

@@ -22,8 +22,8 @@ public class Circle
     public Circle()
     {
         diameter = 68;
-        xPosition = 230;
-        yPosition = 90;
+        xPosition = 250;
+        yPosition = 250;
         color = "blue";
     }
 
@@ -94,6 +94,14 @@ public class Circle
     {
         erase();
         yPosition += distance;
+        draw();
+    }
+
+    public void setPosition(int newX, int newY)
+    {
+        erase();
+        xPosition = newX;
+        yPosition = newY;
         draw();
     }
 

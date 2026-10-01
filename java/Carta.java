@@ -23,7 +23,7 @@ public class Carta {
     }
 
 
-    private String obtenerNombreValor() {
+    public String obtenerNombreValor() {
         if (valor == 1) {
             return "AS";
         }

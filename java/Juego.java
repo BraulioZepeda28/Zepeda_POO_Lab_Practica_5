@@ -94,16 +94,28 @@ public class Juego {
         
 
 
+
+
+
+
         
-        System.out.println("Prueba de Practica 6");
-         System.out.println("La carta de " + jugadorEncontrado.nombre + " se va a mostrar. Y esta carta es " + cartaBuscada + ".");
-        // Carta cartaTest = ana.getMano().get(0); 
-        Visualizador.carta(cartaBuscada, new Posicion(20, 40)); 
+        System.out.println("\n \nPrueba de Practica 6");
+        System.out.println("La carta de " + jugadorEncontrado.nombre  + " se va a mostrar. Y esta carta es " + cartaBuscada + ".");
+        Visualizador.carta(cartaBuscada, new Posicion(220, 220));
+       
+       
+        //Zona de testeo
+      // int valorPrueba = 11;
+       // Tipo tipoPrueba = Tipo.DIAMANTES;
+        //Carta cartaTest = new Carta(valorPrueba, tipoPrueba);
+        //System.out.println("Carta de prueba: " + cartaTest + ".");
+       //Visualizador.carta(cartaTest, new Posicion(220, 220));
         
         
 
 
 
+        
 
 
     }

@@ -28,8 +28,8 @@ public class Canvas
     public static Canvas getCanvas()
     {
         if(canvasSingleton == null) {
-            canvasSingleton = new Canvas("BlueJ Picture Demo", 500, 300, 
-                                         Color.white);
+            canvasSingleton = new Canvas("BlueJ Picture Demo", 500, 500, 
+                                         new Color(22, 105, 55));
         }
         canvasSingleton.setVisible(true);
         return canvasSingleton;
@@ -65,7 +65,10 @@ public class Canvas
         objects = new ArrayList<Object>();
         shapes = new HashMap<Object, ShapeDescription>();
     }
-
+/**
+     * Dibuja una cadena de texto en el lienzo gráfico.
+     */
+ 
     /**
      * Set the canvas visibility and brings canvas to the front of screen
      * when made visible. This method can also be used to bring an already
@@ -104,6 +107,14 @@ public class Canvas
         shapes.put(referenceObject, new ShapeDescription(shape, color));
         redraw();
     }
+
+    public void drawText(Object referenceObject, String text, int x, int y, String color)
+    {
+        objects.remove(referenceObject);
+        objects.add(referenceObject);
+        shapes.put(referenceObject, new ShapeDescription(text, x, y, color));
+        redraw();
+    }
  
     /**
      * Erase a given shape's from the screen.
@@ -128,6 +139,9 @@ public class Canvas
         else if(colorString.equals("black")) {
             graphic.setColor(Color.black);
         }
+            else if(colorString.equals("vino")) {
+                graphic.setColor(new Color(128, 0, 32));
+            }
         else if(colorString.equals("blue")) {
             graphic.setColor(new Color(30, 75, 220));
         }
@@ -213,6 +227,9 @@ public class Canvas
     {
         private Shape shape;
         private String colorString;
+        private String text;
+        private int textX;
+        private int textY;
 
         public ShapeDescription(Shape shape, String color)
         {
@@ -220,10 +237,24 @@ public class Canvas
             colorString = color;
         }
 
+        public ShapeDescription(String text, int x, int y, String color)
+        {
+            this.text = text;
+            textX = x;
+            textY = y;
+            colorString = color;
+        }
+
         public void draw(Graphics2D graphic)
         {
             setForegroundColor(colorString);
-            graphic.fill(shape);
+            if(text == null) {
+                graphic.fill(shape);
+            }
+            else {
+                graphic.setFont(new Font("SansSerif", Font.BOLD, 36));
+                graphic.drawString(text, textX, textY);
+            }
         }
     }
 
